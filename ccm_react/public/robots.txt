@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /interventions/
+Disallow: /projects/

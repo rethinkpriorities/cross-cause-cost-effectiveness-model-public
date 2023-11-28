@@ -1,0 +1,2 @@
+Package for definitions & calculations about Rethink Priorities Research Projects about Intervenions (as opposed to object-level Interventions themselves),
+and the ROI of Rethink Priorities Research Projects.

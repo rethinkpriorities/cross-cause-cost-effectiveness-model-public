@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "charliermarsh.ruff",
+    "ms-python.black-formatter",
+    "editorconfig.editorconfig",
+    "hbenl.vscode-test-explorer",
+    "littlefoxteam.vscode-python-test-adapter",
+    "dbaeumer.vscode-eslint",
+    "wix.glean",
+    "antfu.unocss",
+    "esbenp.prettier-vscode",
+    "yoavbls.pretty-ts-errors"
+  ]
+}

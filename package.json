@@ -1,0 +1,26 @@
+{
+  "name": "cross-cause-model",
+  "version": "1.0.0",
+  "description": "## Core Model",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "uv": "uvicorn ccm_api.main:app --reload"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rethinkpriorities/cross-cause-model.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rethinkpriorities/cross-cause-model/issues"
+  },
+  "homepage": "https://github.com/rethinkpriorities/cross-cause-model#readme",
+  "volta": {
+    "node": "18.17.1"
+  },
+  "devDependencies": {
+  }
+}

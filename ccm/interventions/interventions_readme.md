@@ -1,0 +1,1 @@
+Package for definitions and simulations about object-level Interventions, centered around making DALYs/$1000 estimates.

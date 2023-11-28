@@ -1,0 +1,54 @@
+{
+  // Type checking
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.inlayHints.functionReturnTypes": true,
+  // Testing
+  "python.testing.pytestEnabled": true,
+  // Black + Ruff
+  "python.formatting.provider": "none",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true,
+      "source.organizeImports": true
+    },
+    // Prevents ruff-vscode#128
+    "source.organizeImports.isort": true,
+  },
+  // Other "smart" features
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.gotoDefinitionInStringLiteral": true,
+  "python.analysis.inlayHints.pytestParameters": true,
+  "tailwindCSS.includeLanguages": {
+    "python": "html"
+  },
+  // CCM react
+  "[typescript][javascript][javascriptreact][typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true,
+      "source.organizeImports": true
+    },
+  },
+  "editor.formatOnSaveMode": "file",
+  "files.autoSave": "onFocusChange",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.eslint": true
+  },
+  "eslint.workingDirectories": [
+    "./ccm_react"
+  ],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+  ],
+  "unocss.root": [
+    "./ccm_react"
+  ],
+  "editor.linkedEditing": true,
+}

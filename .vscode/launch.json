@@ -1,0 +1,53 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "inputs": [
+    {
+      "id": "component",
+      "type": "pickString",
+      "description": "Which component to run",
+      "options": [
+        "all",
+        "comparative",
+        "effectiveness",
+        "moral-weights",
+        "projects",
+        "x-risk"
+      ]
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Debug FastAPI",
+      "type": "python",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": [
+        "main:app",
+        "--reload"
+      ],
+      "jinja": true,
+      "justMyCode": true
+    },
+    {
+      "name": "Debug model",
+      "type": "python",
+      "request": "launch",
+      "program": "ccm",
+      "args": [
+        "${input:component}"
+      ],
+      "justMyCode": true
+    },
+  ]
+}

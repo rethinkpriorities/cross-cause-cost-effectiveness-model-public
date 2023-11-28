@@ -1,0 +1,1 @@
+Package for encapsulating all Facts/Premises/Assumptions about world-state which are independent of any particular Interventions. 

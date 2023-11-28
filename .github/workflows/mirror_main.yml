@@ -1,0 +1,22 @@
+# This creates a copy of 'main' in 'production'. Production is intended to represent the code used for production releases.
+
+name: Mirror Main to Prod
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  mirror_main:
+    name: Mirror Main
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        name: Checkout repository
+
+      - name: Copy main
+        run: |
+          git branch -f production main
+          git push -f origin production
+

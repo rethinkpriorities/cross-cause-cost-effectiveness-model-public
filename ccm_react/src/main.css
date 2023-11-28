@@ -1,0 +1,269 @@
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  margin: 0;
+  counter-reset: figures;
+  counter-reset: tables;
+}
+
+button {
+  background-color: transparent;
+  border-width: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  padding: 0;
+}
+
+/* From Defensive CSS */
+/* https://defensivecss.dev/ */
+/* Break words when there is enough space */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  overflow-wrap: break-word;
+}
+
+a {
+  color: currentColor;
+}
+
+/*
+  Set a maximum width for an image
+  and let the image cover its bounding box to avoid distortion.
+*/
+img {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+/* Details/summary reset */
+details summary {
+  cursor: pointer;
+}
+
+details summary > * {
+  display: inline;
+}
+
+figure {
+  counter-increment: figures;
+}
+figcaption:before {
+  font-weight: bold;
+  content: "Figure " counter(figures) ": ";
+}
+
+.caption:before {
+  counter-increment: tables;
+  content: "Table " counter(tables) ": ";
+  font-weight: bold;
+}
+
+.riskEraSpacer {
+  height: 10px; /* Adjust for your desired "shrunk" space between boxes */
+  position: relative;
+  cursor: pointer;
+  background-color: transparent; /* Or the color of the container if you want the spacer to be invisible */
+  transition: height 0.3s ease; /* Smooth transition for height change */
+}
+
+.riskEraSpacer:hover {
+  height: 50px; /* Height when hovering */
+}
+
+.addRiskEraButton {
+  display: none;
+  height: 50px;
+  width: 50px;
+  background-color: lightblue;
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centers the button in the spacer */
+}
+
+.riskEraSpacer:hover .addRiskEraButton {
+  display: block;
+}
+
+.inline-button {
+  @apply p-0;
+  border: 1px solid;
+  border-radius: 4px;
+  border-color: transparent;
+  /* Reset button text styles  */
+  font: inherit;
+  /* Let the button be selectable */
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  line-height: 1.75;
+  pointer-events: auto;
+  cursor: pointer;
+  white-space: pre;
+}
+
+/* https://latex.vercel.app/style.css */
+/* Better tables */
+table:not(.borders-custom) {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: auto;
+  max-width: 100%;
+  border-top: var(--border-width-thick) solid currentColor;
+  border-bottom: var(--border-width-thick) solid currentColor;
+  /* display: block; */
+  overflow-x: auto; /* does not work because element is not block */
+  /* white-space: nowrap; */
+  counter-increment: caption;
+}
+/* add bottom border on column table headings  */
+table:not(.borders-custom) tr > th[scope="col"] {
+  border-bottom: var(--border-width-thin) solid currentColor;
+}
+/* add right border on row table headings  */
+table:not(.borders-custom) tr > th[scope="row"] {
+  border-right: var(--border-width-thin) solid currentColor;
+}
+table:not(.borders-custom) > tbody > tr:first-child > td,
+table:not(.borders-custom) > tbody > tr:first-child > th {
+  border-top: var(--border-width-thin) solid currentColor;
+}
+table:not(.borders-custom) > tbody > tr:last-child > td,
+table:not(.borders-custom) > tbody > tr:last-child > th {
+  border-bottom: var(--border-width-thin) solid currentColor;
+}
+
+/* Table column alignment */
+.col-1-l tr > :nth-child(1),
+.col-2-l tr > :nth-child(2),
+.col-3-l tr > :nth-child(3),
+.col-4-l tr > :nth-child(4),
+.col-5-l tr > :nth-child(5),
+.col-6-l tr > :nth-child(6),
+.col-7-l tr > :nth-child(7),
+.col-8-l tr > :nth-child(8),
+.col-9-l tr > :nth-child(9),
+.col-10-l tr > :nth-child(10),
+.col-11-l tr > :nth-child(11),
+.col-12-l tr > :nth-child(12) {
+  text-align: left;
+}
+.col-1-c tr > :nth-child(1),
+.col-2-c tr > :nth-child(2),
+.col-3-c tr > :nth-child(3),
+.col-4-c tr > :nth-child(4),
+.col-5-c tr > :nth-child(5),
+.col-6-c tr > :nth-child(6),
+.col-7-c tr > :nth-child(7),
+.col-8-c tr > :nth-child(8),
+.col-9-c tr > :nth-child(9),
+.col-10-c tr > :nth-child(10),
+.col-11-c tr > :nth-child(11),
+.col-12-c tr > :nth-child(12) {
+  text-align: center;
+}
+.col-1-r tr > :nth-child(1),
+.col-2-r tr > :nth-child(2),
+.col-3-r tr > :nth-child(3),
+.col-4-r tr > :nth-child(4),
+.col-5-r tr > :nth-child(5),
+.col-6-r tr > :nth-child(6),
+.col-7-r tr > :nth-child(7),
+.col-8-r tr > :nth-child(8),
+.col-9-r tr > :nth-child(9),
+.col-10-r tr > :nth-child(10),
+.col-11-r tr > :nth-child(11),
+.col-12-r tr > :nth-child(12) {
+  text-align: right;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.5rem;
+  line-height: 1.1;
+}
+/* Table caption */
+caption {
+  text-align: left;
+  font-size: 0.923em;
+  /* border-bottom: 2pt solid #000; */
+  padding: 0 0.25em 0.25em;
+  width: 100%;
+  margin-left: 0;
+}
+
+caption::before {
+  content: "Table " counter(caption) ". ";
+  font-weight: bold;
+}
+
+/* allow scroll on the x-axis */
+.scroll-wrapper {
+  overflow-x: auto;
+}
+
+/* if a table is wrapped in a scroll wrapper,
+  the table cells shouldn't wrap */
+.scroll-wrapper > table td {
+  white-space: nowrap;
+}
+table {
+  --body-color: hsl(0, 5%, 10%);
+  --body-bg-color: hsl(210, 20%, 98%);
+  --link-visited: hsl(0, 100%, 33%);
+  --link-focus-outline: hsl(220, 90%, 52%);
+  --pre-bg-color: hsl(210, 28%, 93%);
+  --kbd-bg-color: hsl(210, 5%, 100%);
+  --kbd-border-color: hsl(210, 5%, 70%);
+  --border-width-thin: 1.36px;
+  --border-width-thick: 2.27px;
+  --sidenote-target-border-color: hsl(55, 55%, 70%);
+  --footnotes-border-color: hsl(0, 0%, 39%);
+  --text-indent-size: 1.463rem;
+  display: table !important;
+  width: 100% !important;
+}
+table,
+thead,
+tbody,
+tr {
+  width: 100%;
+}
+
+.rt-DialogOverlay {
+  max-width: 100vw;
+}
+
+.squiggledisplay header {
+  display: none;
+}
+.squiggledisplay table {
+  display: none !important;
+}
+
+@media screen and (max-width: 720px) {
+  .squiggledisplay canvas {
+    max-width: 80vw;
+    max-height: 120px;
+  }
+}
+
+svg {
+  background: transparent !important;
+}

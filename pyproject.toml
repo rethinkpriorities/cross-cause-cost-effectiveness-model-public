@@ -1,0 +1,107 @@
+[tool.poetry]
+name = "cross-cause-model"
+version = "0.0.4"
+description = ""
+repository = "https://github.com/rethinkpriorities/cross-cause-model"
+authors = ["Rethink Priorities <contact@rethinkpriorities.org>"]
+readme = "README.md"
+
+packages = [
+  { include = "ccm" },
+  { include = "ccm_api" },
+]
+include = ["data"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+squigglepy = { git = "https://github.com/rethinkpriorities/squigglepy.git", rev = "65666a4" }  # TODO: change to "^0.27" once released
+numpy = "^1.25.2"
+pandas = "^2.0.3"
+salib = "^1.4.7"
+matplotlib = "^3.7.2"
+rich = "^13.5.2"
+tqdm = "^4.66.1"
+typer = { extras = ["all"], version = "^0.9.0" }
+seaborn = "^0.12.2"
+pytest-regressions = "^2.4.2"
+pydantic = "^2.3.0"
+pydantic_core = "^2.6.3"
+typing-extensions = "^4.7.1"
+dash = "^2.12.1"
+dash-bootstrap-components = "^1.4.2"
+frozendict = "^2.3.8"
+uvicorn = {extras = ["standard"], version = "^0.23.2"}
+brotli-asgi = "^1.4.0"
+sentry-sdk = {extras = ["fastapi"], version = "^1.31.0"}
+
+[tool.poetry.group.ccm_api.dependencies]
+fastapi = { extras = ["all"], version = "^0.103.1" }
+fastapi-cache2 = "^0.2.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+pluggy = "^1.2.0"
+ruff = "^0.0.291"
+black = "^23.9.1"
+shed = "^2023.6.1"
+pyright = "^1.1.324"
+pytest-cov = "^4.1.0"
+pytest-fast-first = "^1.0.5"
+pytest-xdist = "^3.3.1"
+
+
+[tool.ruff]
+line-length = 120
+exclude = ["./accessory_models"]
+# Rules
+# See https://beta.ruff.rs/docs/rules/ for more information
+select = [
+  "E",
+  "F",
+  "NPY",
+  "PD",
+  "N",
+  "C90",
+  "C4",
+  "PT",
+  "SIM",
+  "TCH",
+  "UP",
+  "ICN",
+  "PIE",
+  "ERA",
+  "TRY",
+  "RUF",
+  "B",
+  "TD",
+  "PTH",
+]
+
+# Disabled rules
+# TRY003 (long messages in exceptions) is just annoying
+# TD002 requires authors in TODOs, which seems unecessary
+# TD003 requires links, but somethimes this is too bulky
+ignore = ["TRY003", "TD002", "TD003"]
+
+# Automatic removal of unused imports (F401) is annoying when developing
+# We re-enable this in CI
+unfixable = []
+
+[tool.ruff.mccabe]
+max-complexity = 10
+
+[tool.black]
+line-length = 120
+target-version = ["py310"]
+
+[tool.pyright]
+pythonVersion = "3.10"
+pythonPlatform = "Linux"
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers"
+markers = ["slow: marks tests as slow (deselect with '-m \"not slow\"')"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
